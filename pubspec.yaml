@@ -24,9 +24,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   shared_preferences: ^0.5.6+3
+  provider:
+  chopper: ^2.4.1
+
 
 
 dev_dependencies:
+  build_runner:
+  chopper_generator: ^2.3.4
   flutter_test:
     sdk: flutter
 
@@ -45,6 +50,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/floor.png
+    - assets/ecelllogo.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
