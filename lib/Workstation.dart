@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:loginpage/dataPage.dart';
 
+import 'data/post_api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -100,9 +103,14 @@ class Work extends State<WorkingPlace> {
                         //child: new Icon(Icons.arrow_right),
                         splashColor: Colors.redAccent,
                         onPressed: () {
+                          Navigator.push(
+                              context,new MaterialPageRoute(
+                              builder: (context)=>dataPage()
+                          ));
 
                         }
                           ),
+
                         ]),
                   ],
                 )
