@@ -37,7 +37,7 @@ class WorkingPlace extends StatefulWidget {
 }
 
 class Work extends State<WorkingPlace> {
-  String data = 'User';
+  String data = 'Guest';
 
   TextEditingController controller = TextEditingController();
 
@@ -76,7 +76,7 @@ class Work extends State<WorkingPlace> {
                       padding: EdgeInsets.only(top: 160.0),
                     ),
                     new Text(
-                      data,
+                      "\t Hi, "+data,
                       style: TextStyle(
                         fontSize: 30.0,
                       ),
@@ -99,8 +99,11 @@ class Work extends State<WorkingPlace> {
                         minWidth: 100.0,
                         color: Colors.teal,
                         textColor: Colors.white,
-                        child: new Text("LogOut"),
-                        //child: new Icon(Icons.arrow_right),
+                        //child: new Text("View Data"),
+
+                        child: new Image(image: AssetImage("assets/ecelllogo.png"),
+                          width:250 ,
+                        height: 250,),
                         splashColor: Colors.redAccent,
                         onPressed: () {
                           Navigator.push(

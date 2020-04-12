@@ -10,10 +10,10 @@ class DisplayData extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-
-
+      appBar: AppBar(
+        title: Text("List of BlaBlas"),
+      ),
       body: _buildBody(context),
-
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
@@ -22,11 +22,11 @@ class DisplayData extends StatelessWidget {
 
             print(""+response.body);
             */
-          }
-      ),
+            print(
+                "Kya MAtlab Isko DDDabaaaaaaaaaaaaaaaaaaaaaaane kaaaaaaaaaaaaaaaaa ");
+          }),
     );
   }
-
 }
 
 FutureBuilder<Response> _buildBody(BuildContext context) {
@@ -38,43 +38,52 @@ FutureBuilder<Response> _buildBody(BuildContext context) {
           return _buildPosts(context, posts);
         } else {
           return Center(
-            child: CircularProgressIndicator(),
+           child: CircularProgressIndicator(),
           );
         }
-      }
-  );
+      });
 }
 
 ListView _buildPosts(BuildContext context, List posts) {
   return ListView.builder(
     itemCount: posts.length,
     padding: EdgeInsets.all(8),
-
     itemBuilder: (context, index) {
-      return Card(
+      return  Card(
         elevation: 4,
         child: ListTile(
-          title: Text(posts[index]['title'],
-            style: TextStyle(fontWeight: FontWeight.bold,
+
+          title:  Hero(
+          tag: posts[index]['title'],
+            transitionOnUserGestures: true,
+            child:Text(
+            posts[index]['title'],
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
+
+
           ),
-          leading:
-              Image.network(
-                  posts[index]['thumbnailUrl'],
-              ),
 
-          onTap: ()=> _navigateToPost(context,posts[index]['id']),
+          ),
 
-        ),
+          leading:Image.network(
+            posts[index]['thumbnailUrl'],
+          ),
+
+          onTap: () => _navigateToPost(context, posts[index]['id']),
+
+        )
       );
+
     },
   );
 }
 
 void _navigateToPost(BuildContext context, int id) {
-Navigator.of(context).push(
-  MaterialPageRoute(
-      builder: (context)=>SinglePostPage(postId: id),
-  ),
-);
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => SinglePostPage(postId: id),
+    ),
+  );
 }

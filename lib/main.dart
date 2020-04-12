@@ -41,7 +41,7 @@ class LoginPageState extends State<LoginPage>
   void initState() {
     super.initState();
     _iconAnimationController = new AnimationController(
-        vsync: this, duration: new Duration(milliseconds: 300));
+        vsync: this, duration: new Duration(milliseconds: 800));
     _iconAnimation = new CurvedAnimation(
       parent: _iconAnimationController,
       curve: Curves.easeOut,
@@ -66,11 +66,24 @@ class LoginPageState extends State<LoginPage>
     print("Load Spf Executes");
     return preferences.getString(prefKey_name)??'';
   }
+  var colorLabel=Colors.white;
   Future<bool> saveData()async{
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString(prefKey_name, controller.text);
-    print(":UserName SPfs Working");
+    if(controller.text=='' || controller.text==null){
+      print("E m p t y V a l u e ###");
+      setState(() {
+        colorLabel=Colors.redAccent;
 
+      });
+
+    }
+    else {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString(prefKey_name, controller.text);
+      print(":UserName SPfs Working");
+      loadData();
+      toWorkstation();
+
+  }
   }
 
 
@@ -123,14 +136,16 @@ class LoginPageState extends State<LoginPage>
                   image: new AssetImage("assets/ecelllogo.png"),
                   width:_iconAnimation.value * 170.0,
                   height: _iconAnimation.value * 170.0,
+
                 ),
                 new Form(
                   child: new Theme(
                     data: new ThemeData(
-                      brightness: Brightness.dark, primarySwatch: Colors.teal,
+                      brightness: Brightness.dark,
+                      primarySwatch: Colors.teal,
                       inputDecorationTheme: new InputDecorationTheme(
                         labelStyle: new TextStyle(
-                          color: Colors.white,fontSize: 20.0
+                          color: colorLabel,fontSize: 20.0
                         )
                       )
                     ),
@@ -164,11 +179,9 @@ class LoginPageState extends State<LoginPage>
                               minWidth: 100.0,
                               onPressed: ()=>{
                                 saveData(),
-                                loadData(),
-                              toWorkstation(),
                           },
-                              color: Colors.teal,
-                              textColor: Colors.white,
+                              color: colorLabel,
+                              textColor: Colors.black,
                               child: new Text("Login"),
                               //child: new Icon(Icons.arrow_right),
                               splashColor: Colors.redAccent,

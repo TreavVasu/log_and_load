@@ -31,7 +31,7 @@ class SinglePostPage extends StatelessWidget {
               return _buildPost(post);
             } else {
               return Center(
-                child: CircularProgressIndicator(),
+               child: CircularProgressIndicator(),
               );
             }
           }),
@@ -43,17 +43,28 @@ class SinglePostPage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          Text(
+
+
+
+          SizedBox(
+            height: 400,
+            width: 400,
+            child: Image.network(
+              post['url'],
+            ),
+          ),
+      Hero(
+        tag: post['title'],
+        transitionOnUserGestures: true,
+        child:Text(
             post['title'],
             style: TextStyle(
               fontSize: 30.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            height: 8,
-          ),
-          Image.network(post['url']),
+
+      ),
         ],
       ),
     );
