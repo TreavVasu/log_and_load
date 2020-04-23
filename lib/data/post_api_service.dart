@@ -22,6 +22,9 @@ abstract class PostApiService extends ChopperService {
           _$PostApiService(),
         ],
         converter: JsonConverter());
+    print(_$PostApiService(client).toString());
+
     return _$PostApiService(client);
+
   }
 }

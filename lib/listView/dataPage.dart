@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'DisplayData.dart';
-import 'data/post_api_service.dart';
+import '../data/post_api_service.dart';
 void main() => runApp(new dataPage());
 
 class dataPage extends StatelessWidget{
@@ -19,7 +19,7 @@ class dataPage extends StatelessWidget{
           primarySwatch: Colors.blue,
         ),
       ) ,
-    );;
+    );
   }
 }
 

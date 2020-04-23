@@ -2,35 +2,30 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:chopper/chopper.dart';
 import 'package:provider/provider.dart';
-import 'data/post_api_service.dart';
+import '../data/post_api_service.dart';
 import 'SinglePostPage.dart';
 
 class DisplayData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("List of BlaBlas"),
-      ),
-      body: _buildBody(context),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () async {
-            /*final response = await Provider.of<PostApiService>(context)
-                .postPost({'key':'value'});
 
-            print(""+response.body);
-            */
-            print(
-                "Kya MAtlab Isko DDDabaaaaaaaaaaaaaaaaaaaaaaane kaaaaaaaaaaaaaaaaa ");
-          }),
-    );
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("List of BlaBlas"),
+        ),
+        body: _buildBody(context),
+
+      );
+
+
+
   }
 }
 
+
 FutureBuilder<Response> _buildBody(BuildContext context) {
-  return FutureBuilder<Response>(
+  return  FutureBuilder<Response>(
       future: Provider.of<PostApiService>(context).getPosts(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
@@ -79,7 +74,6 @@ ListView _buildPosts(BuildContext context, List posts) {
     },
   );
 }
-
 void _navigateToPost(BuildContext context, int id) {
   Navigator.of(context).push(
     MaterialPageRoute(
@@ -87,3 +81,34 @@ void _navigateToPost(BuildContext context, int id) {
     ),
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Waste
+
+/*floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () async {
+              *//*final response = await Provider.of<PostApiService>(context)
+                .postPost({'key':'value'});
+
+            print(""+response.body);
+            *//*
+              print(
+                  "Kya MAtlab Isko DDDabaaaaaaaaaaaaaaaaaaaaaaane kaaaaaaaaaaaaaaaaa ");
+            }),*/

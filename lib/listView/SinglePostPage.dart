@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:chopper/chopper.dart';
 import 'package:provider/provider.dart';
-import 'data/post_api_service.dart';
+import '../data/post_api_service.dart';
 
 class SinglePostPage extends StatelessWidget {
   final int postId;
